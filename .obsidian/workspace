@@ -1,0 +1,155 @@
+{
+  "main": {
+    "id": "8702acd48e2ada8c",
+    "type": "split",
+    "children": [
+      {
+        "id": "89d34848674eb08b",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Modern Linux Tools.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1a4c3802f9a63a77",
+    "type": "split",
+    "children": [
+      {
+        "id": "3650ad2a55400e86",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "05fbeecdb92aaa24",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "c6418b565c2dd181",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "track",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "byModifiedTime"
+              }
+            }
+          },
+          {
+            "id": "99dcd8fd3c437054",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 289,
+    "collapsed": true
+  },
+  "right": {
+    "id": "b78129d8a37777e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "cbd4d37a862dfc57",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5da7939a1a7762f4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Modern Linux Tools.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4c7d99fd036e1c8d",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Modern Linux Tools.md"
+              }
+            }
+          },
+          {
+            "id": "0d692ceac35f91db",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "96a2682b02d9e570",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Modern Linux Tools.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "ab17cf6a76ed238d",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "89d34848674eb08b",
+  "lastOpenFiles": [
+    "Modern Linux Tools.md",
+    "Vehicles.md",
+    "Jordan Peterson on Essays.md",
+    "Good Eggs Code.md",
+    "How to Manage UP.md",
+    "journal/2022-W14.md",
+    "Important dates.md",
+    "shared/TASKS/TASKS - Do Now.md",
+    "shared/TASKS/TASKS - Triage.md",
+    "shared/tools/Dashboard.md"
+  ]
+}

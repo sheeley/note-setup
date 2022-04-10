@@ -1,0 +1,21 @@
+{
+  "renderNullAs": "\\-",
+  "taskLinkLocation": "start",
+  "taskLinkText": "🔗",
+  "taskCompletionTracking": true,
+  "taskCompletionText": "done",
+  "warnOnEmptyResult": true,
+  "refreshEnabled": true,
+  "refreshInterval": 1000,
+  "defaultDateFormat": "MMMM dd, yyyy",
+  "defaultDateTimeFormat": "h:mm a - MMMM dd, yyyy",
+  "maxRecursiveRenderDepth": 6,
+  "tableIdColumnName": "File",
+  "tableGroupColumnName": "Group",
+  "inlineQueryPrefix": "=dataview",
+  "inlineJsQueryPrefix": "$=dataview",
+  "enableDataviewJs": true,
+  "enableInlineDataviewJs": false,
+  "prettyRenderInlineFields": true,
+  "schemaVersion": 1
+}

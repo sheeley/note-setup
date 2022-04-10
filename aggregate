@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+set -euo pipefail # x
+
+cp -R "$NOTES_DIR/shared" .
+cp -R "$NOTES_DIR/.obsidian" ./
+rm .obsidian/publish.json

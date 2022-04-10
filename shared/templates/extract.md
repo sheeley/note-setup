@@ -1,0 +1,2 @@
+# {{newTitle}} {{date}}
+{{content}}

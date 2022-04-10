@@ -1,0 +1,5 @@
+---
+record: recipe
+url: 
+author: "[[]]"
+---

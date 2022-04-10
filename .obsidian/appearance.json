@@ -1,0 +1,8 @@
+{
+  "baseFontSize": 16,
+  "cssTheme": "California Coast",
+  "theme": "moonstone",
+  "enabledCssSnippets": [
+    "custom"
+  ]
+}

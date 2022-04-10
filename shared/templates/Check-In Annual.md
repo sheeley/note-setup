@@ -1,0 +1,14 @@
+---
+checkIn: annual
+---
+- [ ] [Annual Check-In](Annual%20Check-In.md)
+- [ ] How'd things go last year? How do you want to approach things differently?
+	- Family
+	- Health
+	- Career
+	- Finances
+- [ ] Do [2019-04-16 rands professional growth questionnaire template](2019-04-16%20rands%20professional%20growth%20questionnaire%20template.md)
+- [ ] Get campfire permit
+- [ ] Check batteries in camping things
+- [ ] Get fishing permit / submit tags [https://www.ca.wildlifelicense.com/internetsales/LicenseNeedsHarvestReporting](https://www.ca.wildlifelicense.com/internetsales/LicenseNeedsHarvestReporting)
+- [ ] order a poppy pass https://store.parks.ca.gov/product/golden-poppy-annual-day-use-pass/

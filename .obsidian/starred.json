@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "type": "file",
+      "title": "Shortcuts",
+      "path": "Home.md"
+    },
+    {
+      "type": "file",
+      "title": "TODO",
+      "path": "TASKS/TASKS.md"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "command-palette:open": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "P"
+    }
+  ],
+  "switcher:open": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "P"
+    }
+  ],
+  "workspace:split-vertical": [
+    {
+      "modifiers": [
+        "Ctrl",
+        "Shift"
+      ],
+      "key": "L"
+    }
+  ],
+  "editor:focus-left": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "H"
+    }
+  ],
+  "hotkeysplus-obsidian:better-toggle-todo": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "T"
+    }
+  ],
+  "editor:focus-right": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "L"
+    }
+  ],
+  "zk-prefixer": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "N"
+    }
+  ],
+  "file-explorer:new-file-in-new-pane": []
+}

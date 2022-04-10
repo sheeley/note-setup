@@ -1,0 +1,105 @@
+/* Make H1 go right to the top, california coast has very large margins */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* margin-top: 0 !important; */
+  margin-bottom: 0 !important;
+  text-transform: capitalize;
+}
+
+.table-view-table > thead > tr > th {
+  text-transform: capitalize;
+}
+
+/* hide frontmatter in preview */
+.frontmatter-container {
+  display: none;
+}
+
+a.tag,
+.cm-s-obsidian span.cm-hashtag,
+span.dataview.inline-field {
+  background-color: var(--background-modifier-accent);
+  color: white;
+  border-radius: 4px;
+  padding: 5px 7px !important;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.cm-s-obsidian span.cm-hashtag-begin {
+  border-radius: 4px 0 0 4px;
+  padding-right: 0 !important;
+}
+
+.cm-s-obsidian span.cm-hashtag-end {
+  border-radius: 0px 4px 4px 0px;
+  padding-left: 0 !important;
+}
+
+span.dataview.inline-field-key,
+span.dataview.inline-field-value {
+  font-family: var(--text-editor);
+  font-size: var(--editor-font-size);
+  font-weight: var(--editor-font-weight);
+  line-height: var(--editor-line-height);
+  font-feature-settings: var(--editor-font-features);
+  -webkit-font-smoothing: antialiased;
+}
+
+span.dataview.inline-field-key {
+  padding: 0 0.7em 0 0;
+}
+
+span.dataview.inline-field-key::after {
+  content: ":";
+  font-weight: bold;
+}
+
+span.dataview.inline-field-value {
+  padding: 0 !important;
+}
+
+span.dataview.inline-field-key,
+span.dataview.inline-field-value,
+span.dataview.inline-field-value a {
+  color: #eee;
+  text-decoration: none;
+}
+
+a.tag:hover,
+.cm-s-obsidian span.cm-hashtag:hover,
+span.dataview.inline-field:hover {
+  box-shadow: none;
+  text-shadow: none;
+}
+
+button.button-default {
+  padding: 10px;
+}
+
+/* fix for list bullets sitting too low */
+.markdown-source-view.mod-cm6 .list-bullet:after {
+  top: -7px;
+}
+
+.task-list-item input {
+  margin-right: 5px;
+}
+
+/* hide the underline for the link to a task's file */
+.task-list-item-checkbox + a {
+  text-decoration: none;
+}
+
+.side-dock-ribbon {
+  display: none;
+}
+
+/* disable the weird min-height generated for embedded notes */
+.markdown-preview-sizer.markdown-preview-section {
+  min-height: 0 !important;
+}
