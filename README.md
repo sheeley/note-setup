@@ -4,7 +4,7 @@ This is an operational vault that demonstrates how I use Obsidian to manage meet
 To get a real feel for it, I'd suggest downloading the vault and opening in Obsidian. If you've taken that path, open up [[2022-04-10 10-30 Meeting 2]] and [[TASKS - Triage|triage]] to get a feel for things!
 
 ## Daily Notes
-![[daily note.png]]
+![Daily Note view](/assets/daily%20note.png)
 These are generated from [[daily notes]]. The sections are:
 * Section for notes
 * List of any notes created or referencing today
@@ -30,7 +30,7 @@ attendees:
 ### Content
 #### Generated - Contextual Tasks
 The `contextual-taskview` view pulls in tasks based on matching attendees and topics, like this: 
-![[ketanji 1o1.png]]
+![1o1 Note View](/assets/ketanji%201o1.png)
 Explicit tasks, as seen above, mean that the task directly references one of the attendees of the meeting.
 
 Implicit tasks simply mean that there is an overlap between the attendees of the current meeting and the attendees of the meeting where the task was created. 
@@ -47,7 +47,7 @@ My automation creates a file for each meeting, but I may have schedule changes o
 
 ## Task Management
 While the contextual tasks above are valuable for discussions, it's useful to have global views into tasks. The [[TASKS]] pages, based on `taskview.js`, provide high-level views into categorized tasks, like this:
-![[tasks.png]]
+![Task View](/assets/tasks.png)
 ## Styling
 [.obsidian/snippets/style.css](.obsidian/snippets/style.css)  helps [California Coast](https://github.com/mgmeyers/obsidian-california-coast-theme) match my personal preferences.
 
