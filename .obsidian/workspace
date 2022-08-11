@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "89d34848674eb08b",
+        "id": "909811eca29dd79d",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Modern Linux Tools.md",
+            "file": "Current Goals.md",
             "mode": "source",
             "source": false
           }
@@ -40,7 +40,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "track",
+                "query": "body",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -57,8 +57,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -79,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Modern Linux Tools.md",
+                "file": "Current Goals.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +95,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Modern Linux Tools.md"
+                "file": "Current Goals.md"
               }
             }
           },
@@ -117,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Modern Linux Tools.md",
+                "file": "Current Goals.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -139,17 +138,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "89d34848674eb08b",
+  "active": "909811eca29dd79d",
   "lastOpenFiles": [
-    "Modern Linux Tools.md",
-    "Vehicles.md",
-    "Jordan Peterson on Essays.md",
-    "Good Eggs Code.md",
-    "How to Manage UP.md",
-    "journal/2022-W14.md",
-    "Important dates.md",
+    "shared/TASKS/TASKS - Weekly Summary.md",
     "shared/TASKS/TASKS - Do Now.md",
-    "shared/TASKS/TASKS - Triage.md",
-    "shared/tools/Dashboard.md"
+    "Current Goals.md",
+    "2022-07-31 19-51 .md",
+    "quant/2021-11-14.md",
+    "quant/2022-07-31.md",
+    "quant/2022-01-31.md",
+    "quant/2022-02-28.md",
+    "quant/2022-04-30.md",
+    "quant/2022-05-31.md"
   ]
 }

@@ -14,12 +14,22 @@ h6 {
   text-transform: capitalize;
 }
 
+.internal-embed {
+  max-height: 15em;
+  /* border: 1px solid red; */
+}
+
 /* hide frontmatter in preview */
 .frontmatter-container {
   display: none;
 }
 
+/* 
+style links/tags 
+*/
 a.tag,
+.markdown-rendered ul .internal-link,
+span.cm-hmd-internal-link,
 .cm-s-obsidian span.cm-hashtag,
 span.dataview.inline-field {
   background-color: var(--background-modifier-accent);
@@ -28,6 +38,12 @@ span.dataview.inline-field {
   padding: 5px 7px !important;
   box-shadow: none;
   text-shadow: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cm-s-obsidian span.cm-hmd-internal-link { 
+  color: white;
 }
 
 .cm-s-obsidian span.cm-hashtag-begin {
@@ -102,4 +118,13 @@ button.button-default {
 /* disable the weird min-height generated for embedded notes */
 .markdown-preview-sizer.markdown-preview-section {
   min-height: 0 !important;
+}
+
+/* highlight good/vad values */
+span.good {
+  color: green;
+}
+
+span.bad {
+  color: red;
 }

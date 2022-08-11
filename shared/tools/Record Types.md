@@ -1,3 +1,6 @@
+---
+aliases: ["Record Types"]
+---
 # Record Types
 
 ```dataviewjs

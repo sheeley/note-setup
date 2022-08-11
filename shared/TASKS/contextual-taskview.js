@@ -1,3 +1,11 @@
+var debug = false
+function log(t) {
+    if (!debug) { return }
+    let now = new Date()
+    let diff = now - last
+    last = now
+    console.log(t, diff)
+}
 let { DateTime } = dv.luxon
 const curr = dv.current()
 let query = `-"shared"`
@@ -12,10 +20,9 @@ let lookups = new Set()
 // dv.view("contextual-taskview.js", {context: "Johnny"})
 function addAliases(page) {
     if (!page) { return } 
-    if (page.path) {
-        page = page.path
-    }
+    if (page.path) { page = page.path }
     if (!page || !page.replace) { return } 
+    
     let pageText = page.replace("[[", "").replace("]]", "").toLowerCase()
     page = dv.page(pageText)
 
@@ -59,14 +66,15 @@ if (input && input.context) { addAliases(input.context) }
 
 // use frontmatter attendees
 const current = dv.current()
+console.log(current)
 if (current.attendees) { current.attendees.forEach(a => addAliases(a)) }
 if (current.aliases) { current.aliases.forEach(a => addAliases(a)) }
 if (current.topic) { addAliases(current.topic) }
 const search = new Set()
 if (current.topic) { addAll(search, current.topic) }
-if (current.attendees) { addAll(search, current.attendees.array()) }
+if (current.attendees) { addAll(search, current.attendees) }
 
-dv.el("hr", "")
+
 const allowImplicit = current.implicitTasks || true
 let rendered = false
 // if there are lookups, find appropriate tasks
@@ -82,7 +90,7 @@ if (lookups.size > 0) {
                 p.file.tasks.forEach(t => {
                     t.searchable = new Set()
                     if (p.topic) { addAll(t.searchable, p.topic) }
-                    if (p.attendees) { addAll(t.searchable, p.attendees.array()) }
+                    if (p.attendees && p.attendees.array ) { addAll(t.searchable, p.attendees) } 
                 })
             }
             return p
@@ -107,6 +115,7 @@ if (lookups.size > 0) {
 
     const outstanding = allTasks.where(t => !t.completed)
     if (outstanding.length) {
+        dv.el("hr", "")
         dv.header(2, `Outstanding (${outstanding.length})`)
         const split = outstanding.array().reduce((prev, val) => {
             let key = val.explicit ? "explicit" : "implicit"          
@@ -138,9 +147,12 @@ if (lookups.size > 0) {
     }
 }
 
-if (!rendered) { 
+
+debug = true
+if (debug && !rendered) { 
+    dv.el("hr", "")
     if (lookups.size) {
-        dv.paragraph(`No tasks found for (${[...lookups].join(", ")})`) 
+        dv.paragraph(`No tasks found`)
     } else {
         dv.paragraph("No topic or attendees in frontmatter, not looking up tasks")
     }

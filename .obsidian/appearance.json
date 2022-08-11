@@ -4,5 +4,6 @@
   "theme": "moonstone",
   "enabledCssSnippets": [
     "custom"
-  ]
+  ],
+  "baseFontSizeAction": false
 }

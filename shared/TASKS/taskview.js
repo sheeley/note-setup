@@ -1,3 +1,4 @@
+var debug = false
 let { DateTime } = dv.luxon
 
 let shareAttrs = [
@@ -18,31 +19,58 @@ let doNowText = [
     "#p0", "#p1", "#p2", "#p3", "#p4"
 ]
 
-let workFilter = '-"shared" AND -"recipes"'
+let workFilter = '-"shared" AND -"recipes" AND -"fanatics"'
 
 const start = DateTime.now()
 let last = DateTime.now()
 function log(t) {
+    if (!debug) { return }
     let now = new Date()
     let diff = now - last
     last = now
     console.log(t, diff)
+    dv.paragraph(`${t}: ${diff}`)
 }
 log("starting ==============")
 
 const curr = dv.current()
 
-let tasks = dv.pages(workFilter)
-    .where(p => !p.ignoreTasks && p.file != curr.file)
-    // .sort(p => p.ctime, 'desc')
-    .file.tasks
-    .where(t => t.text.trim() != "" && !t.completed)
+let today = DateTime.local().startOf("day")
+let files = dv.pages(workFilter)
+    .where(p => {
+        return !p.ignoreTasks && p.file != curr.file && (!p.file.day || p.file.day <= today)
+    }).file
+
+let tasks = []
+files.forEach(f => {
+    let fileTasks = f.tasks.where(t => {
+            if (!t || t.completed) { return false }
+            // console.log(t)
+            // TODO: should I care about this?
+            // - [ ] 
+            // ![[TASKS]]
+            // causes an incorrect task to be created
+            if (t.text.contains("\n")) { t.text = t.text.split("\n")[0] }
+            // t.text = t.text.replace("![[TASKS]]", "")
+            if (t.text.trim() == "") { return false }
+            t.cday = f.cday
+            t.mday = f.mday
+            return true
+        }).array()
+    
+    tasks = tasks.concat(fileTasks)
+})
+tasks.sort((t1, t2) => t1.cday < t2.cday )
+
 log('alltasks')
 let listTitle = ""
 let taskList
 log('completed')
-let today = DateTime.local().startOf("day")
 
+// tasks.forEach(t => t.text.contains("\n") && console.log(t.text))
+
+
+let hiring = (t) => t.text.contains("#hire")
 
 let doNow = (t) => {
     if (t.p !== undefined) { return true }
@@ -55,18 +83,12 @@ let doNow = (t) => {
 
 let triaged = (t) => {
     for (let s of triagedTags) {
-        if (t.text.contains(s)) {
-            return true
-        }
+        if (t.text.contains(s)) { return true }
     }
 
     for (let a of triagedAttrs) {
-        if (t[a] !== undefined) {
-            return true
-        }
+        if (t[a] !== undefined) { return true }
     }
-
-    return false
 }
 
 const filters = {}
@@ -88,22 +110,16 @@ const soon = today.plus({ days: 2 })
 const waiting = (t) => (t.waiting || t.text.contains("#waiting"))
 const toShare = (t) => {
     for (let attr of shareAttrs) {
-        if (t[attr]) {
-            return true
-        }
+        if (t[attr]) { return true }
     }
     for (let tag of shareTags) {
-        if (t.text.contains(tag)) {
-            return true
-        }
+        if (t.text.contains(tag)) { return true }
     }
 }
+const noise = (t) => t.text.contains("#someday")
 const dueSoon = (t) => (t.due && t.due > today && t.due < soon)
 const due = (t) => (t.due !== undefined)
-const informational = (t) => {
-    if (t.text.contains("#info") || t.text.contains("#reminder")) { return true }
-    return false
-}
+const informational = (t) => t.text.contains("#info") || t.text.contains("#reminder")
 const isSchedule = (t) => {
     let text = t.text.toLowerCase()
     return text.contains("talk to") || text.contains("reach out to")
@@ -117,67 +133,72 @@ let defaultSort = (t) => t
 const doNowLabel = "do now"
 const scheduleLabel = "Schedule Discussions"
 // customSorts[doNowLabel] = (tasks) => tasks.sort(t => t.p, 'asc')
-customGroups[doNowLabel] = (tasks) => {
-    let due = []
-    let prioritized = []
-    let others = []
-    tasks.forEach(t => {
-        if (t.due) { due.push(t); return }
-        if (t.text.contains("#p0") || t.text.contains("#p1") || t.text.contains("#p2") || t.text.contains("#p3")) {
-            t.p = 1
-        }
-        if (t.p !== undefined) { prioritized.push(t); return }
-        others.push(t)
-    })
+// customGroups[doNowLabel] = (tasks) => {
+//     const priorityPattern = /#p(\d+)/
+//     let due = []
+//     let prioritized = []
+//     let others = []
+//     tasks.forEach(t => {
+//         if (t.due) { due.push(t); return }
 
-    due = dv.array(due).sort(t => t.due, 'asc')
-    prioritized = dv.array(prioritized).where(t => t.p !== undefined).sort(t => t.p, 'asc')
-    others = dv.array(others).where(t => !t.due || t.p == undefined)
-    return [
-        { title: "Due", tasks: due },
-        { title: "Prioritized", tasks: prioritized },
-        { title: "Others", tasks: others }
-    ]
-}
+//         const match = priorityPattern.exec(t.text)
+//         if (match) {
+//             t.p = match[1]
+//         }
+//         if (t.p !== undefined) { prioritized.push(t); return }
+//         others.push(t)
+//     })
 
+//     due = dv.array(due).sort(t => t.due, 'asc')
+//     prioritized = dv.array(prioritized).where(t => t.p !== undefined).sort(t => t.p, 'asc')
+//     others = dv.array(others).where(t => !t.due || t.p == undefined)
+//     return [
+//         { title: "Due", tasks: due },
+//         { title: "Prioritized", tasks: prioritized },
+//         { title: "Others", tasks: others }
+//     ]
+// }
 
-const doSoonLabel = "due soon"
-// customSorts[doSoonLabel] = (tasks) => tasks.sort(t => t.due, 'asc')
-
+const doSoonLabel = "schedule"
 const shareLabel = "to share"
-// customSorts[shareLabel] = (tasks) => tasks.sort(t => t.share, 'asc')
-
+const delegateLabel = "delegate"
+const noiseLabel = "drop"
 const waitingLabel = "awaiting responses"
-// customSorts[waitingLabel] = customSorts[shareLabel]
-
 const triageLabel = "triage"
-const order = [triageLabel, "Schedule", doNowLabel, doSoonLabel, shareLabel, waitingLabel]
+
+const hiringLabel = "hiring"
+const order = [triageLabel, doNowLabel, delegateLabel, doSoonLabel, hiringLabel, shareLabel, waitingLabel, noiseLabel]
+
+let eisenhower = (t) => {
+    if (t.text.contains("#important-urgent")) { return doNowLabel } // do
+    if (t.text.contains("#important-nonurgent")) { return doSoonLabel } // schedule
+    if (t.text.contains("#unimportant-urgent")) { return delegateLabel } // delegate
+    if (t.text.contains("#unimportant-nonurgent")) { return noiseLabel } // delete
+    return "triage"
+}
 
 tasks.forEach(t => {
     if (informational(t)) { return }
-
-    if (doNow(t)) {
-        // if(isSchedule(t)) { addTask(doNowLabel, scheduleLabel, t) }
-        // then due
-        // then prioritized
-        addTask(doNowLabel, t); return
-    }
-    if (dueSoon(t)) { addTask(doSoonLabel, t); return }
-    if (due(t)) { return; } // TODO: should show a list of scheduled
-
+    // if (doNow(t)) { addTask(doNowLabel, t); return }
+    // if (dueSoon(t)) { addTask(doSoonLabel, t); return }
+    // if (due(t)) { return; } // TODO: should show a list of scheduled
     if (toShare(t)) { addTask(shareLabel, t); return }
     if (waiting(t)) { addTask(waitingLabel, t); return }
-
-    addTask(triageLabel, t)
+    if (noise(t)) { addTask(noiseLabel, t); return }
+    if (hiring(t)) { addTask(hiringLabel, t); return }
+    addTask(eisenhower(t), t)
+    // addTask(triageLabel, t)
 })
 log('filtering completed')
 let headers = []
+
+let toTitleCase = (str) => str.replace( /\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())
 
 let pageTitle = curr.file.name.toLowerCase().replace("tasks - ", "")
 for (let filter of order) {
     let title = filter
     if (!filters[filter]) { continue }
-    let text = `[[TASKS - ${title}|${title} (${filters[filter].length})]]`
+    let text = `[[TASKS - ${title}|${toTitleCase(title)} (${filters[filter].length})]]`
     headers.push(text)
 
     if (pageTitle == filter.toLowerCase()) {
@@ -198,7 +219,9 @@ if (taskList) {
     let customGrouping = customGroups[pageTitle]
     if (!customGrouping) {
         let customSort = customSorts[pageTitle] || defaultSort
-        dv.taskList(customSort(dv.array(taskList)), false)
+        // const tasks = customSort(dv.array(taskList))
+        const tasks = dv.array(taskList).sort(t => t.cday, 'desc')
+        dv.taskList(tasks, false)
         log('tasks')
     } else {
         let groups = customGrouping(taskList)
@@ -210,33 +233,12 @@ if (taskList) {
         }
     }
 }
-console.log("Total", DateTime.now() - start)
-// dv.paragraph(`Empty: ${secondaryHeaders.join(" | ")}`)
-
-// let filters2 = {
-//     // "Triage": tasks.where(t => !triaged(t))
-//     //     .sort(t => t.ctime, 'asc'),
-//     // "Overdue": tasks.where(t => { return t.due && t.due < today }).sort(t => t.p || t.due, 'asc'),
-//     // "Active": tasks.where(t => t.active),
-
-//     // "Do Now": tasks.where(doNow).sort(t => t.p, 'asc'),
-//     // "Due Soon": tasks.where(t => {
-//     //     return t.due &&
-//     //         t.due > today &&
-//     //         t.due < today.plus({ days: 2 })
-//     // }).sort(t => t.due, 'asc'),
-//     // "Outdated": tasks.where(t => t.created && t.created.diffNow("days") > 30),
-
-//     // "To Share": tasks.where(t => t.share || t.talk || t.ask),
-//     // "Awaiting Responses": tasks.where(t => t.waiting).sort(t => t.waiting, 'asc'),
-//     // "Do Sometime": tasks.where(t => !t.completed && (t.text.contains("#todo") || t.text.contains("#someday"))),
-//     // TODO: contexts / projects
-
-//     // "Lacking Context": tasks.where(t => !t.completed && !t.text.contains("#")), // TODO: missing person or project
-//     // "Lacking Due Date": tasks.where(t => !t.completed && !t.due),
-//     // "Review": tasks.where(t => !t.completed && (t.text.contains("#blocked") || t.text.contains("#delegated"))),
-// // let secondaryTreatment = {
-//     // "Triage": { 
-//     //     "Schedule": (tasks) => tasks.filter(t => t.text.contains("reach out to"))
-//     // }
+// if (taskList) {
+//     const headers = ["", "Task", "Link"] // "Priority", "Due", "Tags"]
+//     const rows = taskList.map(t => {
+//         console.log(t)
+//         return ["- [ ] ", t.text, `[[${t.link.path}|link]]`] // , t.p, t.due, t.tags]
+//     })
+//     dv.table(headers, rows)
 // }
+log("Total", DateTime.now() - start)

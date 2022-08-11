@@ -35,5 +35,6 @@
   "showUnsupportedFiles": true,
   "legacyEditor": false,
   "livePreview": true,
-  "newFileLocation": "current"
+  "newFileLocation": "current",
+  "readableLineLength": false
 }

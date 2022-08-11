@@ -1,0 +1,118 @@
+{
+  "choices": [
+    {
+      "id": "08448950-bdde-46a6-a9eb-e5caa4271f0b",
+      "name": "New Quote",
+      "type": "Template",
+      "command": true,
+      "templatePath": "shared/templates/quote.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD HH-mm}} "
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "quotes"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false
+      },
+      "appendLink": false,
+      "incrementFileName": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default"
+    },
+    {
+      "id": "ea6597f4-d146-455a-bfb8-976f00b16052",
+      "name": "New Recipe",
+      "type": "Template",
+      "command": true,
+      "templatePath": "shared/templates/recipe.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD HH-mm}} "
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "recipes"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false
+      },
+      "appendLink": false,
+      "incrementFileName": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default"
+    },
+    {
+      "id": "e6d5cfb1-eec7-4ce6-93bc-359c30a132cd",
+      "name": "New Note",
+      "type": "Template",
+      "command": true,
+      "templatePath": "shared/templates/zettlekasten.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE:YYYY-MM-DD HH-mm}} "
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "/"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false
+      },
+      "appendLink": false,
+      "incrementFileName": true,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default"
+    },
+    {
+      "id": "bf6f1e58-d09f-430c-ae84-072667998c38",
+      "name": "New Quant",
+      "type": "Template",
+      "command": true,
+      "templatePath": "shared/templates/quant.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{DATE}}.md"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "quant"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false
+      },
+      "appendLink": false,
+      "incrementFileName": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default"
+    }
+  ],
+  "macros": [],
+  "inputPrompt": "single-line"
+}

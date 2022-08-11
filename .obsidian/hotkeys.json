@@ -49,7 +49,37 @@
       "key": "L"
     }
   ],
-  "zk-prefixer": [
+  "zk-prefixer": [],
+  "file-explorer:new-file-in-new-pane": [],
+  "hotkeysplus-obsidian:toggle-bullet-number": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "L"
+    }
+  ],
+  "file-explorer:new-file": [],
+  "note-refactor-obsidian:app:extract-selection-first-line": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "X"
+    }
+  ],
+  "templater-obsidian:insert-templater": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "E"
+    }
+  ],
+  "markdown:toggle-preview": [],
+  "templater-obsidian:create-new-note-from-template": [],
+  "quickadd:choice:e6d5cfb1-eec7-4ce6-93bc-359c30a132cd": [
     {
       "modifiers": [
         "Mod"
@@ -57,5 +87,13 @@
       "key": "N"
     }
   ],
-  "file-explorer:new-file-in-new-pane": []
+  "quickadd:choice:3986f7cb-0daa-459e-a2b6-c44fbdad7f19": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "N"
+    }
+  ]
 }

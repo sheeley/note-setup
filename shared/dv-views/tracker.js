@@ -38,7 +38,15 @@ let chartData = {
         }
     }
 }
-let fileDay = (p) => p.file.day || p.file.cday
+let fileDay = (p) => {
+    if (p.file.day) { return p.file.day }
+    if (p.file.name.contains("W")) { 
+        let [weekYear, weekNumber] = p.file.name.split("-W")
+        if (!weekNumber) { return }
+        return DateTime.fromObject({ weekYear, weekNumber })
+    }
+    return p.file.cday
+}
 let colors = [
     'rgba(255, 99, 132, 0.8)',
     'rgba(54, 162, 235, 0.8)',
@@ -50,13 +58,18 @@ let colors = [
 
 let others = new Set()
 let tracked = {}
-let trackerPages = dv.pages(`-"shared"`)
+let trackerPages = dv.pages(`-"share" AND -"quant"`)
+trackerPages = dv.pages(`"quant"`)
     .where(p => {
         if (!p.track) { return }
         let day = fileDay(p)
         return startDay < day
     })
     .sort(p => fileDay(p), "asc")
+
+// let cpcmd = trackerPages.map(p => `cp ${p.file.path} quant/`)
+
+trackerPages
     .forEach(p => {
         let { track } = p
         for (let [key, value] of Object.entries(track)) {

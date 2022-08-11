@@ -1,6 +1,6 @@
 ---
 tags: [tasklist]
-aliases: ["do now", "todo"]
+aliases: ["todo"]
 ---
 ```dataviewjs
 dv.view("tasks/taskview", {type: "do now"})

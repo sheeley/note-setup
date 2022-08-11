@@ -9,9 +9,9 @@
   "templater-obsidian",
   "obsidian-style-settings",
   "customjs",
-  "obsidian-kindle-plugin",
   "obsidian-limelight",
   "obsidian-charts",
   "table-editor-obsidian",
-  "obsidian-codemirror-options"
+  "obsidian-codemirror-options",
+  "quickadd"
 ]
